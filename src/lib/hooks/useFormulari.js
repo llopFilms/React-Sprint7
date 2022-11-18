@@ -86,7 +86,26 @@ const useFormulari = () => {
     }));
   };
 
-  return { formulari, setOpcio, setPagines, setIdiomes };
+  const handleClick = (id) => {
+    switch (id) {
+      case "paginesInc":
+        setPagines(formulari.extres.pagines ? formulari.extres.pagines + 1 : 1);
+        break;
+      case "paginesDec":
+        setPagines(formulari.extres.pagines - 1);
+        break;
+      case "idiomesInc":
+        setIdiomes(formulari.extres.idiomes ? formulari.extres.idiomes + 1 : 1);
+        break;
+      case "idiomesDec":
+        setIdiomes(formulari.extres.idiomes - 1);
+        break;
+      default:
+        return;
+    }
+  };
+
+  return { formulari, setOpcio, setPagines, setIdiomes, handleClick };
 };
 
 export default useFormulari;
