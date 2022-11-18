@@ -1,8 +1,9 @@
 import useFormulari from "../../lib/hooks/useFormulari";
+import Panell from '../Panell/Panell'
 import { Container } from "./TaulaStyled";
 
 const Taula = () => {
-  const { formulari, setOpcio } = useFormulari();
+  const { formulari, setOpcio, setPagines, setIdiomes } = useFormulari();
   const {
     web: { actiu: webActiu },
     seo: { actiu: seoActiu },
@@ -23,6 +24,7 @@ const Taula = () => {
           />
           Una pàgina web (500€)
         </label>
+        {(formulari.web.actiu) && <Panell pagines={formulari.extres.pagines} idiomes={formulari.extres.idiomes} setPagines={setPagines} setIdiomes={setIdiomes} />} 
         <label htmlFor="inputSeo">
           <input
             id="inputSeo"

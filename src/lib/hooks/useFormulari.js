@@ -14,22 +14,46 @@ const useFormulari = () => {
       actiu: false,
       preu: 200,
     },
+    extres: {
+      pagines: 0,
+      idiomes: 0,
+    },
     total: 0,
   });
 
-  const calcularTotal = (valor) => {
+  const calcularExtres = (valor, numero) => {
+    let extres = 0;
+    if (formulari.web.actiu) extres += formulari.web.preu;
+    if (formulari.seo.actiu) extres += formulari.seo.preu;
+    if (formulari.ads.actiu) extres += formulari.ads.preu;
+    valor === "pagines"
+      ? (extres += numero * 30 + formulari.extres.idiomes * 30)
+      : (extres += formulari.extres.pagines * 30 + numero * 30);
+    return extres;
+  };
+
+  const calcularTotal = (valor, numero) => {
     switch (valor) {
       case "web": {
-        if (formulari.web.actiu) return formulari.total - formulari.web.preu;
-        return formulari.total + formulari.web.preu;
+        return formulari.web.actiu
+          ? formulari.total - formulari.web.preu
+          : formulari.total + formulari.web.preu;
       }
       case "seo": {
-        if (formulari.seo.actiu) return formulari.total - formulari.seo.preu;
-        return formulari.total + formulari.seo.preu;
+        return formulari.seo.actiu
+          ? formulari.total - formulari.seo.preu
+          : formulari.total + formulari.seo.preu;
       }
       case "ads": {
-        if (formulari.ads.actiu) return formulari.total - formulari.ads.preu;
-        return formulari.total + formulari.ads.preu;
+        return formulari.ads.actiu
+          ? formulari.total - formulari.ads.preu
+          : formulari.total + formulari.ads.preu;
+      }
+      case "pagines": {
+        return calcularExtres("pagines", numero);
+      }
+      case "idiomes": {
+        return calcularExtres("idiomes", numero);
       }
       default:
         break;
@@ -44,7 +68,25 @@ const useFormulari = () => {
     }));
   };
 
-  return { formulari, setOpcio };
+  const setPagines = (numeroPagines) => {
+    if (numeroPagines < 0 || isNaN(numeroPagines)) return;
+    setFormulari((prev) => ({
+      ...prev,
+      extres: { pagines: numeroPagines, idiomes: prev.extres.idiomes },
+      total: calcularTotal("pagines", numeroPagines),
+    }));
+  };
+
+  const setIdiomes = (numeroIdiomes) => {
+    if (numeroIdiomes < 0 || isNaN(numeroIdiomes)) return;
+    setFormulari((prev) => ({
+      ...prev,
+      extres: { pagines: prev.extres.pagines, idiomes: numeroIdiomes },
+      total: calcularTotal("idiomes", numeroIdiomes),
+    }));
+  };
+
+  return { formulari, setOpcio, setPagines, setIdiomes };
 };
 
 export default useFormulari;
