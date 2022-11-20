@@ -1,16 +1,29 @@
 import useFormulari from "../../lib/hooks/useFormulari";
+import { useEffect } from "react";
+import { setStorage } from "../../lib/utils/localStorage";
 import Panell from "../Panell/Panell";
 import { Container } from "./TaulaStyled";
 
 const Taula = () => {
   const { formulari, setOpcio, setPagines, setIdiomes, handleClick } =
     useFormulari();
+
   const {
     web: { actiu: webActiu },
     seo: { actiu: seoActiu },
     ads: { actiu: adsActiu },
+    extres: { pagines, idiomes },
     total,
   } = formulari;
+
+  useEffect(() => {
+    setStorage("webActiu", webActiu);
+    setStorage("paginesWeb", pagines);
+    setStorage("idiomesWeb", idiomes);
+    setStorage("seoActiu", seoActiu);
+    setStorage("adsActiu", adsActiu);
+    setStorage("total", total);
+  }, [webActiu, seoActiu, adsActiu, pagines, idiomes, total]);
 
   return (
     <Container className="taula">
@@ -25,10 +38,10 @@ const Taula = () => {
           />
           Una pàgina web (500€)
         </label>
-        {formulari.web.actiu && (
+        {webActiu && (
           <Panell
-            pagines={formulari.extres.pagines}
-            idiomes={formulari.extres.idiomes}
+            pagines={pagines}
+            idiomes={idiomes}
             setPagines={setPagines}
             setIdiomes={setIdiomes}
             handleClick={handleClick}

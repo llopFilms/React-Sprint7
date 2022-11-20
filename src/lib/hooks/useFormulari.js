@@ -1,53 +1,40 @@
 import { useState } from "react";
+import { formulariInicial } from "../constants/formulariInicial";
 
 const useFormulari = () => {
-  const [formulari, setFormulari] = useState({
-    web: {
-      actiu: false,
-      preu: 500,
-    },
-    seo: {
-      actiu: false,
-      preu: 300,
-    },
-    ads: {
-      actiu: false,
-      preu: 200,
-    },
-    extres: {
-      pagines: 0,
-      idiomes: 0,
-    },
-    total: 0,
-  });
+  const [formulari, setFormulari] = useState(formulariInicial);
+
+  const {
+    web: { actiu: webActiu, preu: webPreu },
+    seo: { actiu: seoActiu, preu: seoPreu },
+    ads: { actiu: adsActiu, preu: adsPreu },
+    extres: { pagines, idiomes },
+    total,
+  } = formulari;
 
   const calcularExtres = (valor, numero) => {
-    let extres = 0;
-    if (formulari.web.actiu) extres += formulari.web.preu;
-    if (formulari.seo.actiu) extres += formulari.seo.preu;
-    if (formulari.ads.actiu) extres += formulari.ads.preu;
+    let sumaExtres = 0;
+    if (seoActiu) sumaExtres += seoPreu;
+    if (adsActiu) sumaExtres += adsPreu;
+    if (webActiu) sumaExtres += webPreu;
     valor === "pagines"
-      ? (extres += numero * 30 + formulari.extres.idiomes * 30)
-      : (extres += formulari.extres.pagines * 30 + numero * 30);
-    return extres;
+      ? (sumaExtres += numero * 30 + idiomes * 30)
+      : (sumaExtres += pagines * 30 + numero * 30);
+    return sumaExtres;
   };
 
   const calcularTotal = (valor, numero) => {
     switch (valor) {
       case "web": {
-        return formulari.web.actiu
-          ? formulari.total - formulari.web.preu
-          : formulari.total + formulari.web.preu;
+        return webActiu
+          ? total - webPreu - pagines * 30 - idiomes * 30
+          : total + webPreu + pagines * 30 + idiomes * 30;
       }
       case "seo": {
-        return formulari.seo.actiu
-          ? formulari.total - formulari.seo.preu
-          : formulari.total + formulari.seo.preu;
+        return seoActiu ? total - seoPreu : total + seoPreu;
       }
       case "ads": {
-        return formulari.ads.actiu
-          ? formulari.total - formulari.ads.preu
-          : formulari.total + formulari.ads.preu;
+        return adsActiu ? total - adsPreu : total + adsPreu;
       }
       case "pagines": {
         return calcularExtres("pagines", numero);
@@ -89,23 +76,30 @@ const useFormulari = () => {
   const handleClick = (id) => {
     switch (id) {
       case "paginesInc":
-        setPagines(formulari.extres.pagines ? formulari.extres.pagines + 1 : 1);
+        setPagines(pagines ? pagines + 1 : 1);
         break;
       case "paginesDec":
-        setPagines(formulari.extres.pagines - 1);
+        setPagines(pagines - 1);
         break;
       case "idiomesInc":
-        setIdiomes(formulari.extres.idiomes ? formulari.extres.idiomes + 1 : 1);
+        setIdiomes(idiomes ? idiomes + 1 : 1);
         break;
       case "idiomesDec":
-        setIdiomes(formulari.extres.idiomes - 1);
+        setIdiomes(idiomes - 1);
         break;
       default:
         return;
     }
   };
 
-  return { formulari, setOpcio, setPagines, setIdiomes, handleClick };
+  return {
+    formulari,
+    setFormulari,
+    setOpcio,
+    setPagines,
+    setIdiomes,
+    handleClick,
+  };
 };
 
 export default useFormulari;
