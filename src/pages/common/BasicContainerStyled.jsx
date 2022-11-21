@@ -21,10 +21,18 @@ export const Container = styled.div`
     border-bottom: 0.2rem solid #444;
   }
 
+  > h2 {
+    width: 90%;
+    text-align: center;
+    font-size: 2.5rem;
+    border-bottom: 0.2rem solid #444;
+  }
+
   > div {
     width: 90%;
     padding: 1rem;
     display: flex;
     justify-content: start;
+    position: relative;
   }
 `;

@@ -1,10 +1,12 @@
 import useFormulari from "../../lib/hooks/useFormulari";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { setStorage } from "../../lib/utils/localStorage";
 import Panell from "../Panell/Panell";
-import { Container } from "./TaulaStyled";
+import { Container, BotoCalcul } from "./TaulaStyled";
 
 const Taula = () => {
+  const navega = useNavigate();
   const { formulari, setOpcio, setPagines, setIdiomes, handleClick } =
     useFormulari();
 
@@ -26,7 +28,7 @@ const Taula = () => {
   }, [webActiu, seoActiu, adsActiu, pagines, idiomes, total]);
 
   return (
-    <Container className="taula">
+    <Container>
       <h2>Què vols fer?</h2>
       <div>
         <label htmlFor="inputWeb">
@@ -67,6 +69,7 @@ const Taula = () => {
         </label>
         <p>Preu:&nbsp;{total}€</p>
       </div>
+      <BotoCalcul className="boto" onClick={() => navega("/")}>Tornar...</BotoCalcul>
     </Container>
   );
 };

@@ -1,7 +1,7 @@
 import { Button } from "./BotoStyled";
 
-const Boto = ({ id, onClick, value }) => (
-  <Button id={id} onClick={onClick}>
+const Boto = ({ style, id, onClick, value }) => (
+  <Button style={style} id={id} onClick={onClick}>
     {value}
   </Button>
 );
