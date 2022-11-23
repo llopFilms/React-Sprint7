@@ -1,12 +1,15 @@
-import useFormulari from "../../lib/hooks/useFormulari";
+import { useFormulari } from "../../lib/hooks/useFormulari";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { setStorage } from "../../lib/utils/localStorage";
 import Panell from "../Panell/Panell";
 import { Container, BotoCalcul } from "./TaulaStyled";
+import ModalInfo from "../ModalInfo/ModalInfo";
+import { useModal } from "../../lib/hooks/useModal";
 
 const Taula = () => {
   const navega = useNavigate();
+
   const { formulari, setOpcio, setPagines, setIdiomes, handleClick } =
     useFormulari();
 
@@ -17,6 +20,9 @@ const Taula = () => {
     extres: { pagines, idiomes },
     total,
   } = formulari;
+
+  const { modal, handleModalInfo } = useModal();
+  const { obert, idp, ids, text, valor } = modal;
 
   useEffect(() => {
     setStorage("webActiu", webActiu);
@@ -47,6 +53,7 @@ const Taula = () => {
             setPagines={setPagines}
             setIdiomes={setIdiomes}
             handleClick={handleClick}
+            handleModalInfo={handleModalInfo}
           />
         )}
         <label htmlFor="inputSeo">
@@ -69,7 +76,17 @@ const Taula = () => {
         </label>
         <p>Preu:&nbsp;{total}€</p>
       </div>
-      <BotoCalcul className="boto" onClick={() => navega("/")}>Tornar...</BotoCalcul>
+      <BotoCalcul onClick={() => navega("/")}>Tornar...</BotoCalcul>
+      {obert && (
+        <ModalInfo
+          id="modal"
+          onClick={(e) => handleModalInfo(e.target.id)}
+          idp={idp}
+          ids={ids}
+          text={text}
+          valor={valor}
+        />
+      )}
     </Container>
   );
 };

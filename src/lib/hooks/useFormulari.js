@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { formulariInicial } from "../constants/formulariInicial";
 
-const useFormulari = () => {
+export const useFormulari = () => {
   const [formulari, setFormulari] = useState(formulariInicial);
 
   const {
@@ -101,5 +101,3 @@ const useFormulari = () => {
     handleClick,
   };
 };
-
-export default useFormulari;

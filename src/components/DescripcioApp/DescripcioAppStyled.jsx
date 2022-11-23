@@ -48,7 +48,7 @@ export const Container = styled.div`
 
     .link {
       font-weight: bolder;
-      color: #444;
+      color: ${({theme})=>theme.colors.voraError};
     }
   }
 `;

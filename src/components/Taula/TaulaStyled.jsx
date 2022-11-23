@@ -10,8 +10,8 @@ export const Container = styled.div`
   height: 100%;
   position: relative;
 
-  > h2 {
-    font-size: 1.8rem;
+  > h2 {    
+    font-size: 1.5rem;
   }
 
   > div {
@@ -28,6 +28,10 @@ export const Container = styled.div`
 
       > input {
         margin-right: 1rem;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 

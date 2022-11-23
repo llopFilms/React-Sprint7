@@ -5,27 +5,20 @@ export const Container = styled.div`
   max-width: 60rem;
   margin: 10rem auto;
   padding: 3rem 2rem;
-  background-color: #daf7a6;
+  background-color: ${({ theme }) => theme.colors.fonsContenidor};
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   gap: 2rem;
-  border: 0.2rem solid #444;
+  border: 0.2rem solid ${({ theme }) => theme.colors.vores};
   border-radius: 2rem;
 
-  > h1 {
+  > h1, > h2 {
     width: 90%;
     text-align: center;
     font-size: 2.5rem;
-    border-bottom: 0.2rem solid #444;
-  }
-
-  > h2 {
-    width: 90%;
-    text-align: center;
-    font-size: 2.5rem;
-    border-bottom: 0.2rem solid #444;
+    border-bottom: 0.2rem solid ${({ theme }) => theme.colors.vores};
   }
 
   > div {

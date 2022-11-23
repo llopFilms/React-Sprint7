@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { Button } from "../../components/common/Boto/BotoStyled";
 
 export const Img = styled.img`
-  background: #fff;
+  background-color: ${({theme}) => theme.colors.fonsModal};
   display: block;
   padding: 2rem;
-  border: 1rem solid #ff5522;
+  border: 1rem solid${({theme})=>theme.colors.voraError};
   border-radius: 50%;
 `;
 
