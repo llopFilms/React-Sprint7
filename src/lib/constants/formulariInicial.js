@@ -1,12 +1,8 @@
 import { getStorage } from "../utils/localStorage";
-import dayjs from "dayjs";
-import "dayjs/locale/ca";
 
-export const formulariInicial = {
+export const FORMULARI_INICIAL = {
   id: getStorage("id") ?? 0,
-  data:
-    getStorage("data") ??
-    dayjs(new Date()).locale("ca-es").format("D  MMMM, YYYY"),
+  data: getStorage("data") ?? "",
   nomClient: getStorage("NomClient") ?? "",
   nomPressupost: getStorage("NomPressupost") ?? "",
   web: {

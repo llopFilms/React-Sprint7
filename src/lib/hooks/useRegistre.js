@@ -1,19 +1,19 @@
 import { useState } from "react";
+import dayjs from 'dayjs';
+import "dayjs/locale/ca";
 
 export const useRegistre = () => {
   const [registre, setRegistre] = useState([]);
 
   const handleRegistre = (formulari) => {
     formulari.id++;
-    const formulariNou = { ...formulari }
-    setRegistre((prev) => {
-      return [...prev, formulariNou];
-    });
+    formulari.data = dayjs(new Date()).locale("ca-es").format("D MMMM, YYYY");
+    const formulariNou = { ...formulari };
+    return setRegistre((prev) => [...prev, formulariNou]);
   };
 
   return {
     registre,
-    setRegistre,
     handleRegistre,
   };
 };

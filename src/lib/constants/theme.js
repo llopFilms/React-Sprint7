@@ -1,4 +1,4 @@
-export const theme = {
+export const THEME = {
   fontSizeGeneral: "80%",
   colors: {
     fonsPagina: "#e87649",

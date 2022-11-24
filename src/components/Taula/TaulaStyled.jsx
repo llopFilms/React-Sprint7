@@ -77,7 +77,7 @@ export const Container = styled.div`
     .total {
       position: absolute;
       bottom: 0;
-      padding: 0 .8rem 1rem 0;
+      padding: 0 0.8rem 1rem 0;
 
       > p {
         font-size: 1.4rem;
@@ -95,12 +95,19 @@ export const BotoRegistre = styled(Button)`
 
 export const Container2 = styled.div`
   width: 35rem;
-  height: 90%;
+  height: 88%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   gap: 2rem;
+
+  > div:nth-of-type(1) {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 `;
 
 export const BotoCalcul = styled(Button)`

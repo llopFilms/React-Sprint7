@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { formulariInicial } from "../constants/formulariInicial";
+import { FORMULARI_INICIAL} from '../constants/formulariInicial';
 
 export const useFormulari = () => {
-  const [formulari, setFormulari] = useState(formulariInicial);
+  const [formulari, setFormulari] = useState(FORMULARI_INICIAL);
 
   const {
     //id,

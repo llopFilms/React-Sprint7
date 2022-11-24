@@ -1,19 +1,20 @@
 import { useFormulari } from "../../lib/hooks/useFormulari";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setStorage } from "../../lib/utils/localStorage";
 import Panell from "../Panell/Panell";
 import {
-  Container,
-  BotoCalcul,
-  ContainerTaula,
-  Container2,
-  BotoRegistre,
+Container,
+BotoCalcul,
+ContainerTaula,
+Container2,
+BotoRegistre,
 } from "./TaulaStyled";
 import ModalInfo from "../ModalInfo/ModalInfo";
 import { useModal } from "../../lib/hooks/useModal";
 import { useRegistre } from "../../lib/hooks/useRegistre";
 import Llista from "../Llista/Llista";
+import { ordenarLlista } from "../../lib/utils/ordenarLlista";
 
 const Taula = () => {
   const navega = useNavigate();
@@ -32,8 +33,10 @@ const Taula = () => {
   } = formulari;
 
   const { registre, handleRegistre } = useRegistre();
-  const llista = [...registre];
-  
+
+  const [ordre, setOrdre] = useState("perDefecte");
+  const llistaOrdenada = ordenarLlista(ordre, registre);
+
   const { modal, handleModalInfo } = useModal();
   const { obert, idp, ids, text, valor } = modal;
 
@@ -46,7 +49,16 @@ const Taula = () => {
     setStorage("seoActiu", seoActiu);
     setStorage("adsActiu", adsActiu);
     setStorage("total", total);
-  }, [nomClient, nomPressupost, webActiu, seoActiu, adsActiu, pagines, idiomes, total]);
+  }, [
+    nomClient,
+    nomPressupost,
+    webActiu,
+    seoActiu,
+    adsActiu,
+    pagines,
+    idiomes,
+    total,
+  ]);
 
   return (
     <div style={{ width: "100%", height: "50rem" }}>
@@ -123,7 +135,18 @@ const Taula = () => {
         </Container>
         <Container2>
           <h2>Llista pressupostos</h2>
-          <Llista llista={llista} />
+          <div>
+            <BotoRegistre onClick={(e) => setOrdre("alfabetic")}>
+              Ordre Alfabètic
+            </BotoRegistre>
+            <BotoRegistre onClick={(e) => setOrdre("cronologic")}>
+              Ordre Cronològic
+            </BotoRegistre>
+            <BotoRegistre onClick={(e) => setOrdre("perDefecte")}>
+              Ordre de Registre
+            </BotoRegistre>
+          </div>
+          <Llista llistaOrdenada={llistaOrdenada} />
         </Container2>
         {obert && (
           <ModalInfo

@@ -41,7 +41,7 @@ const ItemLlista = ({pressupost}) => {
                 <li>1 Pàgina web</li>
                 <ul>
                   <li>Pàgines:&nbsp;{pagines}</li>
-                  <li>Idiomes:&nbsp; {idiomes}</li>
+                  <li>Idiomes:&nbsp;{idiomes}</li>
                 </ul>
               </div>
             )}
