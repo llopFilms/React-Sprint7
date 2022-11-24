@@ -5,10 +5,14 @@ export const useFormulari = () => {
   const [formulari, setFormulari] = useState(formulariInicial);
 
   const {
+    //id,
+    //data,
+    //nomClient,
+    //nomPressupost,
     web: { actiu: webActiu, preu: webPreu },
+    extres: { pagines, idiomes },
     seo: { actiu: seoActiu, preu: seoPreu },
     ads: { actiu: adsActiu, preu: adsPreu },
-    extres: { pagines, idiomes },
     total,
   } = formulari;
 
@@ -47,11 +51,18 @@ export const useFormulari = () => {
     }
   };
 
-  const setOpcio = (valor) => {
+  const setDades = (clau, valor) => {
     setFormulari((prev) => ({
       ...prev,
-      [valor]: { actiu: !prev[valor].actiu, preu: prev[valor].preu },
-      total: calcularTotal(valor),
+      [clau]: valor,
+    }));
+  };
+
+  const setOpcio = (clau) => {
+    setFormulari((prev) => ({
+      ...prev,
+      [clau]: { actiu: !prev[clau].actiu, preu: prev[clau].preu },
+      total: calcularTotal(clau),
     }));
   };
 
@@ -95,6 +106,7 @@ export const useFormulari = () => {
   return {
     formulari,
     setFormulari,
+    setDades,
     setOpcio,
     setPagines,
     setIdiomes,

@@ -1,6 +1,6 @@
-import { useState                 } from "react"                ;
-import { textPagines, textIdiomes } from "../data/textosModal"  ;
-import { getStorage               } from "../utils/localStorage";
+import { useState } from "react";
+import { textPagines, textIdiomes } from "../data/textosModal";
+import { getStorage } from "../utils/localStorage";
 
 export const useModal = () => {
   const [modal, setModal] = useState({

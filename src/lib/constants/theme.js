@@ -1,5 +1,5 @@
 export const theme = {
-  fontSizeGeneral: "62.5%",
+  fontSizeGeneral: "80%",
   colors: {
     fonsPagina: "#e87649",
     fonsContenidor: "#daf7a6",

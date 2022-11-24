@@ -9,7 +9,6 @@ body {
   background-color: ${({theme})=>theme.colors.fonsPagina};
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: ${({ theme }) => theme.colors.lletra};
-  height: 100vh;
 }
 
 * {

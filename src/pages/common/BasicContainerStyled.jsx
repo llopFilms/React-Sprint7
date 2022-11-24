@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 60rem;
-  max-width: 60rem;
-  margin: 10rem auto;
-  padding: 3rem 2rem;
+  width: 75rem;
+  margin: 5rem auto;
+  padding: 3rem 1rem;
   background-color: ${({ theme }) => theme.colors.fonsContenidor};
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   border-radius: 2rem;
 
   > h1, > h2 {
-    width: 90%;
+    width: 95%;
     text-align: center;
     font-size: 2.5rem;
     border-bottom: 0.2rem solid ${({ theme }) => theme.colors.vores};

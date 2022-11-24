@@ -12,10 +12,10 @@ export const Overlay = styled.div`
 
 export const Container = styled.div`
   position: relative;
-  top: 0;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50rem;
+  width: 70rem;
   padding: 4rem;
   display: flex;
   flex-direction: column;
