@@ -15,7 +15,7 @@ export const Container = styled.div`
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70rem;
+  width: 50rem;
   padding: 4rem;
   display: flex;
   flex-direction: column;
@@ -36,17 +36,17 @@ export const Container = styled.div`
 
     > h3 {
       align-self: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
     }
   }
 
   > p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 1.5;
   }
 
   > ul {
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding-left: 2rem;
     font-weight: normal;
 

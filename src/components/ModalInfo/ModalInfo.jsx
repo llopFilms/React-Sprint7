@@ -6,7 +6,7 @@ const ModalInfo = ({ id, onClick, text, idp, ids, valor }) => (
     <Container onClick={(e) => e.stopPropagation()}>
       <div>
         <BotoInfo />
-        <h3>Info d'ajuda:</h3>
+        <h3>Info d'ajuda</h3>
       </div>
       <p>{text}</p>
       <ul>

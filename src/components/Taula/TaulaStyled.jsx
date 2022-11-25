@@ -100,13 +100,33 @@ export const Container2 = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  gap: 2rem;
+  gap: 1.5rem;
 
   > div:nth-of-type(1) {
+    margin-top: .6rem;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+
+  > div:nth-of-type(2) {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    > label {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    > input {
+      width: 28rem;
+      padding: 0.25rem .75rem;
+      border: 0.1rem solid ${({ theme }) => theme.colors.vores};
+      border-radius: 1rem;
+    }
   }
 `;
 

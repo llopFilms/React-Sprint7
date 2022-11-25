@@ -5,7 +5,7 @@ import { Container } from "./llistaStyled";
 const Llista = ({ llistaOrdenada }) => {
   return (
     <Container>
-      {llistaOrdenada.length === 0 ? (
+      {!llistaOrdenada.length ? (
         <LlistaBuida />
       ) : (
         <ul style={{ width: "100%" }}>

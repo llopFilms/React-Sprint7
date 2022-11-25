@@ -99,7 +99,7 @@ export const useFormulari = () => {
         setIdiomes(idiomes - 1);
         break;
       default:
-        return;
+        return console.log("Opció no disponible!");
     }
   };
 

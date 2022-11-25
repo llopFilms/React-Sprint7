@@ -4,17 +4,18 @@ import { useEffect, useState } from "react";
 import { setStorage } from "../../lib/utils/localStorage";
 import Panell from "../Panell/Panell";
 import {
-Container,
-BotoCalcul,
-ContainerTaula,
-Container2,
-BotoRegistre,
+  Container,
+  BotoCalcul,
+  ContainerTaula,
+  Container2,
+  BotoRegistre,
 } from "./TaulaStyled";
 import ModalInfo from "../ModalInfo/ModalInfo";
 import { useModal } from "../../lib/hooks/useModal";
 import { useRegistre } from "../../lib/hooks/useRegistre";
 import Llista from "../Llista/Llista";
 import { ordenarLlista } from "../../lib/utils/ordenarLlista";
+import BotoCerca from "../common/BotoCerca/BotoCerca";
 
 const Taula = () => {
   const navega = useNavigate();
@@ -35,7 +36,9 @@ const Taula = () => {
   const { registre, handleRegistre } = useRegistre();
 
   const [ordre, setOrdre] = useState("perDefecte");
-  const llistaOrdenada = ordenarLlista(ordre, registre);
+  const [cerca, setCerca] = useState("");
+
+  const llistaOrdenada = ordenarLlista(ordre, registre, cerca, setCerca);
 
   const { modal, handleModalInfo } = useModal();
   const { obert, idp, ids, text, valor } = modal;
@@ -145,6 +148,17 @@ const Taula = () => {
             <BotoRegistre onClick={(e) => setOrdre("perDefecte")}>
               Ordre de Registre
             </BotoRegistre>
+          </div>
+          <div>
+            <label htmlFor="nomCerca">Cerca: </label>
+            <input
+              id="nomCerca"
+              type="text"
+              min="0"
+              value={cerca}
+              onChange={(e) => setCerca(e.target.value)}
+            />
+            <BotoCerca onClick={(e) => setOrdre("cerca")} />
           </div>
           <Llista llistaOrdenada={llistaOrdenada} />
         </Container2>
