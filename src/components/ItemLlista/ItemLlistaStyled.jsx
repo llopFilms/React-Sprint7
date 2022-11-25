@@ -69,7 +69,7 @@ export const Item = styled.ul`
     border-top: 0.2rem solid ${({ theme }) => theme.colors.fonsInfo};
     color: ${({ theme }) => theme.colors.fonsInfo};
     margin-top: 0.25rem;
-    padding: 0.25rem 0.2rem 0 1rem;
+    padding: 0.25rem 0.1rem 0 1rem;
 
     > div {
       display: flex;
