@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../common/Boto/BotoStyled";
 
 export const Item = styled.ul`
   margin: 0.7rem;
@@ -63,10 +64,27 @@ export const Item = styled.ul`
       }
     }
   }
+
   > li {
     border-top: 0.2rem solid ${({ theme }) => theme.colors.fonsInfo};
     color: ${({ theme }) => theme.colors.fonsInfo};
     margin-top: 0.25rem;
-    padding: 0.25rem 1rem 0;
+    padding: 0.25rem 0.2rem 0 1rem;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
+`;
+
+export const BotoEsborrar = styled(Button)`
+  margin-top: 0.3rem;
+  width: auto;
+  height: auto;
+  font-size: 0.8rem;
+  background-color: ${({ theme }) => theme.colors.fonsModal};
+  color: ${({ theme }) => theme.colors.lletra};
+  padding: 0.3rem 1rem;
 `;

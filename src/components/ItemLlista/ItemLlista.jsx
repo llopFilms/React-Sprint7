@@ -1,6 +1,6 @@
-import { Item } from "./ItemLlistaStyled";
+import { Item, BotoEsborrar } from "./ItemLlistaStyled";
 
-const ItemLlista = ({pressupost}) => {
+const ItemLlista = ({ pressupost, esborrarPressupost }) => {
   const {
     id,
     data,
@@ -51,8 +51,13 @@ const ItemLlista = ({pressupost}) => {
         </li>
       </div>
       <li>
-        <span>Total:</span>&nbsp;
-        {total}&nbsp;€
+        <div>
+          <div>
+            <span>Total:</span>&nbsp;
+            {total}&nbsp;€
+          </div>
+          <BotoEsborrar onClick={(e) => esborrarPressupost(id)}>Esborrar Pressupost</BotoEsborrar>
+        </div>
       </li>
     </Item>
   );

@@ -24,6 +24,7 @@ const Taula = () => {
     useFormulari();
 
   const {
+    id,
     nomClient,
     nomPressupost,
     web: { actiu: webActiu },
@@ -33,7 +34,7 @@ const Taula = () => {
     total,
   } = formulari;
 
-  const { registre, handleRegistre } = useRegistre();
+  const { registre, handleRegistre, esborrarPressupost } = useRegistre();
 
   const [ordre, setOrdre] = useState("perDefecte");
   const [cerca, setCerca] = useState("");
@@ -44,6 +45,7 @@ const Taula = () => {
   const { obert, idp, ids, text, valor } = modal;
 
   useEffect(() => {
+    setStorage("id", id);
     setStorage("nomClient", nomClient);
     setStorage("nomPressupost", nomPressupost);
     setStorage("webActiu", webActiu);
@@ -52,7 +54,9 @@ const Taula = () => {
     setStorage("seoActiu", seoActiu);
     setStorage("adsActiu", adsActiu);
     setStorage("total", total);
+    setStorage("registre", registre);
   }, [
+    id,
     nomClient,
     nomPressupost,
     webActiu,
@@ -61,6 +65,7 @@ const Taula = () => {
     pagines,
     idiomes,
     total,
+    registre,
   ]);
 
   return (
@@ -160,7 +165,10 @@ const Taula = () => {
             />
             <BotoCerca onClick={(e) => setOrdre("cerca")} />
           </div>
-          <Llista llistaOrdenada={llistaOrdenada} />
+          <Llista
+            llistaOrdenada={llistaOrdenada}
+            esborrarPressupost={esborrarPressupost}
+          />
         </Container2>
         {obert && (
           <ModalInfo
