@@ -1,5 +1,5 @@
 import { useFormulari } from "../../lib/hooks/useFormulari";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { setStorage } from "../../lib/utils/localStorage";
 import Panell from "../Panell/Panell";
@@ -44,6 +44,9 @@ const Taula = () => {
   const { modal, handleModalInfo } = useModal();
   const { obert, idp, ids, text, valor } = modal;
 
+  const [parametres, setParametres] = useSearchParams({});
+  console.log(parametres);
+  
   useEffect(() => {
     setStorage("id", id);
     setStorage("nomClient", nomClient);
@@ -55,6 +58,13 @@ const Taula = () => {
     setStorage("adsActiu", adsActiu);
     setStorage("total", total);
     setStorage("registre", registre);
+    setParametres({
+      paginaWeb: webActiu,
+      campanyaSeo: seoActiu,
+      campanyaAds: adsActiu,
+      paginesWeb: pagines,
+      idiomesWeb: idiomes,
+    });
   }, [
     id,
     nomClient,
@@ -66,6 +76,7 @@ const Taula = () => {
     idiomes,
     total,
     registre,
+    setParametres,
   ]);
 
   return (
