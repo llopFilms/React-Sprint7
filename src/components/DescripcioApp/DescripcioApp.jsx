@@ -7,11 +7,11 @@ const DescripcioApp = () => (
       Benvinguts a l'aplicació destinada al càlcul i registre de pressupostos. Podeu escollir el tipus de pressupost d'entre les següents possibilitats:
     </p>
     <ul>
-      <li>Pàgines web</li>
+      <li>Pàgina web</li>
       <li>Consultoria SEO</li>
-      <li>Campanyes amb Google Ads</li>
+      <li>Campanya amb Google Ads</li>
     </ul>
-    <p>Igualment, permet ajustar el preu amb les següents possbilitats extra:</p>
+    <p>Igualment, permet ajustar el preu amb les següents possibilitats extra:</p>
     <ul>
       <li>Número de pàgines</li>
       <li>Número d'idiomes</li>

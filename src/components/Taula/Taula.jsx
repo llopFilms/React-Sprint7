@@ -96,7 +96,7 @@ const Taula = () => {
               />
             </div>
             <div>
-              <label htmlFor="nomPressupost">Nom Pressuspost</label>
+              <label htmlFor="nomPressupost">Nom Pressupost</label>
               <input
                 id="nomPressupost"
                 type="text"
@@ -113,7 +113,7 @@ const Taula = () => {
                 checked={webActiu}
                 onChange={(e) => setOpcio("web")}
               />
-              Una pàgina web (500 €)
+              Pàgina web (500 €)
             </label>
             {webActiu && (
               <Panell
@@ -132,7 +132,7 @@ const Taula = () => {
                 checked={seoActiu}
                 onChange={(e) => setOpcio("seo")}
               />
-              Una consultoria SEO (300 €)
+              Consultoria SEO (300 €)
             </label>
             <label htmlFor="inputAds">
               <input
@@ -141,7 +141,7 @@ const Taula = () => {
                 checked={adsActiu}
                 onChange={(e) => setOpcio("ads")}
               />
-              Una campanya de Google Ads (200 €)
+              Campanya de Google Ads (200 €)
             </label>
             <hr />
             <div className="total">
