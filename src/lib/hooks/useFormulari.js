@@ -1,8 +1,44 @@
 import { useState } from "react";
-import { FORMULARI_INICIAL} from '../constants/formulariInicial';
+import { useParametres } from "./useParametres";
+import { getStorage } from "../utils/localStorage";
 
 export const useFormulari = () => {
-  const [formulari, setFormulari] = useState(FORMULARI_INICIAL);
+  const { parametres } = useParametres();
+  console.log(parametres);
+  const stringABoolea = (string) => string === "true";
+
+  const [formulari, setFormulari] = useState({
+    id: getStorage("id") ?? 0,
+    data: getStorage("data") ?? "",
+    nomClient: getStorage("NomClient") ?? "",
+    nomPressupost: getStorage("NomPressupost") ?? "",
+    web: {
+      actiu:
+        stringABoolea(parametres.get("paginaWeb")) ??
+        getStorage("webActiu") ??
+        false,
+      preu: 500,
+    },
+    extres: {
+      pagines: +parametres.get("paginesWeb") ?? getStorage("paginesWeb") ?? 0,
+      idiomes: +parametres.get("idiomesWeb") ?? getStorage("idiomesWeb") ?? 0,
+    },
+    seo: {
+      actiu:
+        stringABoolea(parametres.get("campanyaSeo")) ??
+        getStorage("seoActiu") ??
+        false,
+      preu: 300,
+    },
+    ads: {
+      actiu:
+        stringABoolea(parametres.get("campanyaAds")) ??
+        getStorage("adsActiu") ??
+        false,
+      preu: 200,
+    },
+    total: getStorage("total") ?? 0,
+  });
 
   const {
     //id,
@@ -66,7 +102,7 @@ export const useFormulari = () => {
     }));
   };
 
-  const setPagines = (numeroPagines) => {
+  const setPagines = (numeroPagines, prev) => {
     if (numeroPagines < 0 || isNaN(numeroPagines)) return;
     setFormulari((prev) => ({
       ...prev,
@@ -75,7 +111,7 @@ export const useFormulari = () => {
     }));
   };
 
-  const setIdiomes = (numeroIdiomes) => {
+  const setIdiomes = (numeroIdiomes, prev) => {
     if (numeroIdiomes < 0 || isNaN(numeroIdiomes)) return;
     setFormulari((prev) => ({
       ...prev,

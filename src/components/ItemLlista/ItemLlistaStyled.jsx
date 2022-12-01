@@ -70,6 +70,7 @@ export const Item = styled.ul`
     color: ${({ theme }) => theme.colors.fonsInfo};
     margin-top: 0.25rem;
     padding: 0.25rem 0.1rem 0 1rem;
+    list-style: none;
 
     > div {
       display: flex;
