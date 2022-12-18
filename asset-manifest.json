@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/React-Sprint7/static/js/main.8db80434.js",
-    "index.html": "/React-Sprint7/index.html",
-    "main.8db80434.js.map": "/React-Sprint7/static/js/main.8db80434.js.map"
+    "main.js": "/pressupostos/static/js/main.aa7900ad.js",
+    "index.html": "/pressupostos/index.html",
+    "main.aa7900ad.js.map": "/pressupostos/static/js/main.aa7900ad.js.map"
   },
   "entrypoints": [
-    "static/js/main.8db80434.js"
+    "static/js/main.aa7900ad.js"
   ]
 }
