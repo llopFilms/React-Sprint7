@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/pressupostos/static/js/main.f7fc751e.js",
+    "main.js": "/pressupostos/static/js/main.b5985f46.js",
     "index.html": "/pressupostos/index.html",
-    "main.f7fc751e.js.map": "/pressupostos/static/js/main.f7fc751e.js.map"
+    "main.b5985f46.js.map": "/pressupostos/static/js/main.b5985f46.js.map"
   },
   "entrypoints": [
-    "static/js/main.f7fc751e.js"
+    "static/js/main.b5985f46.js"
   ]
 }
