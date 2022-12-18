@@ -8,4 +8,6 @@
 - Formularis
 - Hooks
 
+Deployment: https://llopfilms.github.io/React-Sprint7/
+
 Alumne: Jordi Llop
