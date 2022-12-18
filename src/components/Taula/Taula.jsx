@@ -194,7 +194,9 @@ const Taula = () => {
             valor={valor}
           />
         )}
-        <BotoCalcul onClick={() => navega("/")}>Tornar...</BotoCalcul>
+        <BotoCalcul onClick={() => navega(process.env.PUBLIC_URL + "/")}>
+          Tornar...
+        </BotoCalcul>
       </ContainerTaula>
     </div>
   );

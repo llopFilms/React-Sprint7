@@ -9,7 +9,7 @@ const Error = () => {
     <Container style={{justifyContent: "space-between"}}>
       <h2>404 - Pàgina no trobada</h2>
       <Img src={error404} alt="error 404" />
-      <BotoCalcul className="boto" onClick={() => navega("/")}>
+      <BotoCalcul className="boto" onClick={() => navega(process.env.PUBLIC_URL + "/")}>
         Tornar...
       </BotoCalcul>
     </Container>

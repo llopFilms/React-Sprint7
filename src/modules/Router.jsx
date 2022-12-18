@@ -5,9 +5,11 @@ import Error from "../pages/Error/Error";
 
 const Router = () => (
   <Routes>
-    <Route path="/" element={<Benvinguda />} />
-    <Route path="/inici" element={<Inici />} />
-    <Route path="*" element={<Error />} />
+    <Route path={process.env.PUBLIC_URL}>
+      <Route path="" element={<Benvinguda />} />
+      <Route path="inici" element={<Inici />} />
+      <Route path="*" element={<Error />} />
+    </Route>
   </Routes>
 );
 
